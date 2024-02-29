@@ -1,3 +1,24 @@
-<h1>Welcome to your library project</h1>
-<p>Create your package using @sveltejs/package and preview/showcase your work with SvelteKit</p>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<div class="parent">
+    <div class="child">
+        <h2>hola, soy </h2><h1>mabby</h1>
+    </div>
+    <div class="child">
+        jnfdsjf
+    </div>
+    <div class="child">
+        jnfdsjf
+    </div>
+</div>
+
+<style>
+    .child {
+        background-color:lightslategrey;
+    }
+    .parent {
+        display: grid;
+        gap: 1rem;
+
+        grid-template-columns: repeat(auto-fit, minmax(15rem, auto));
+        grid-auto-rows: 28rem;
+    }
+</style>
