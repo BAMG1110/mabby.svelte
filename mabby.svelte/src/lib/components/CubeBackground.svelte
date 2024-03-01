@@ -2,36 +2,44 @@
 import { onMount } from "svelte";
 import * as THREE from "three";
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 
 let container;
-
 onMount(() => {
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-
+    const camera = new THREE.PerspectiveCamera(120, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.set(0,100,100);
+    
     const renderer = new THREE.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
     container.appendChild(renderer.domElement);
-
-    const light = new THREE.PointLight(0xffffff, 1, 100);
-    light.position.set(30, 30, 30);
+    
+    const light = new THREE.PointLight(0xffffff, 100, 100);
+    light.position.set(0, 0, 5);
     scene.add(light);
+    
+    const AmbientLight = new THREE.AmbientLight(0xffffff, 1, 100);
+    light.position.set(5, 5, 5);
+    scene.add(AmbientLight);
+    
+    // const geometry = new THREE.BoxGeometry(10, 10, 10);
+    // const material = new THREE.MeshStandardMaterial();
+    // const cube = new THREE.Mesh(geometry, material);
+    // scene.add(cube);
+    
+    const loader = new GLTFLoader()
+    loader.load('src/lib/assets/interogation_room.glb', function(glft){
+        scene.add(glft.scene)
+    }, undefined, function(error){
+        console.error(error)
+    })
 
-    const geometry = new THREE.BoxGeometry(10, 10, 10);
-    const material = new THREE.MeshBasicMaterial({
-        color: 0x00ff00,
-        wireframe: true,
-    });
-    const cube = new THREE.Mesh(geometry, material);
-    scene.add(cube);
-
-    camera.position.z = 50;
-    const controls = new OrbitControls(camera, renderer.domElement);
-    controls.update();
+    // const controls = new OrbitControls(camera, renderer.domElement);
+    // controls.update();
 
     const animate = function () {
         requestAnimationFrame(animate);
-        controls.update();
+        // controls.update();
         
         renderer.render(scene, camera);
     };
@@ -39,7 +47,10 @@ onMount(() => {
     animate();
 
     window.addEventListener('resize', () => {
+        let width = window.innerWidth/2
+        let height = window.innerHeight/2
         camera.aspect = window.innerWidth / window.innerHeight;
+        cube.scale(width, height, nuevaProfundidad)
         camera.updateProjectionMatrix();
         renderer.setSize(window.innerWidth, window.innerHeight);
     });
@@ -53,6 +64,7 @@ onMount(() => {
   left: 0;
   width: 100%;
   height: 100%;
+  z-index: 0;
 }
 </style>
 

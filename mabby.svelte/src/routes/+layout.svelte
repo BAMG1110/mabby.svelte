@@ -1,7 +1,3 @@
-<script>
-	import logo from '$lib/assets/logo.gif';
-    import CubeBackground from '$lib/components/CubeBackground.svelte';
-</script>
 <style>
     img {
     width: 4rem;
@@ -20,18 +16,18 @@
 }
 
 nav {
-    background-color:aliceblue;
     grid-area: 1 / 4 / 2 / 10;
 
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    z-index: 1;
 }
 
 .title {
     box-sizing: border-box;
     border-style: dashed;
-    border-color: black;
+    border-color:white;
     border-width: 1px;
     grid-area: 3 / 3 / 7 / 6;
     z-index: 1;
@@ -42,13 +38,18 @@ nav {
 .preview {
     box-sizing: border-box;
     border-style: dashed;
-    border-color: black;
+    border-color:white;
     border-width: 1px;
     grid-area: 3 / 6 / 9 / 11;
     z-index: 1;
     min-height: 28rem;
 }
 </style>
+
+<script>
+	import logo from '$lib/assets/logo.gif';
+    import CubeBackground from '$lib/components/CubeBackground.svelte';
+</script>
 
 <CubeBackground/>
 
