@@ -9,38 +9,60 @@
         border-radius: 50%;
     }
 
-    .main {
+    .grid_container {
         height: 100vh;
         display: grid;
-        grid-template-columns: minmax(10rem, 2fr) minmax(auto, 10fr);
-        grid-auto-rows: 1fr 10fr 1fr;
+        gap: 0.4rem;
+        grid-template-columns: repeat(12, 1fr);
+        grid-template-rows: repeat(12, 1fr);
+        background-image:url('$lib/assets/cross-bg.svg');
+		background-size: cover;
     }
-    footer {
-        grid-column-start: 1;
-        grid-column-end: -1;
+
+    nav {
+        background-color:aliceblue;
+        grid-area: 1 / 4 / 2 / 10;
+
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
     }
+
+    .title {
+        box-sizing: border-box;
+        border-style: dashed;
+        border-color: black;
+        border-width: 1px;
+        grid-area: 3 / 3 / 7 / 6;
+        z-index: 1;
+        min-height: 15rem;
+
+    }
+
+    .preview {
+        box-sizing: border-box;
+        border-style: dashed;
+        border-color: black;
+        border-width: 1px;
+        grid-area: 3 / 6 / 9 / 11;
+        z-index: 1;
+        min-height: 28rem;
+    }
+
 </style>
 
-<div class="main">
-    <div class="logo">
+<div class="grid_container">
+    <nav>
+        <a href="https://github.com/mabby1110?tab=repositories">git</a>
         <a href="/">
             <img src={logo} alt="mabby1110 logo">
         </a>
-    </div>
-    <nav>
-        <div class="navbar">
-            <a href="/macetas">Macetas</a>
-            <a href="/about">about</a>
-        </div>
+        <a href="/about">about</a>
     </nav>
-    <div class="sidebar">
-        sidebar
+    <div class="title">
+        <h1>Titulo</h1>
     </div>
-    <div class="content">
-        contenido
+    <div class="preview">
         <slot/>
     </div>
 </div>
-<footer>
-    footer
-</footer>
