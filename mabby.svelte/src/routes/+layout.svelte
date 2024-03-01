@@ -1,55 +1,56 @@
 <script>
 	import logo from '$lib/assets/logo.gif';
+    import CubeBackground from '$lib/components/CubeBackground.svelte';
 </script>
-
 <style>
     img {
-        width: 4rem;
-        height: 4rem;
-        border-radius: 50%;
-    }
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+}
 
-    .grid_container {
-        height: 100vh;
-        display: grid;
-        gap: 0.4rem;
-        grid-template-columns: repeat(12, 1fr);
-        grid-template-rows: repeat(12, 1fr);
-        background-image:url('$lib/assets/cross-bg.svg');
-		background-size: cover;
-    }
+.grid_container {
+    height: 100vh;
+    display: grid;
+    gap: 0.4rem;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    background-image:url('$lib/assets/cross-bg.svg');
+    background-size: cover;
+}
 
-    nav {
-        background-color:aliceblue;
-        grid-area: 1 / 4 / 2 / 10;
+nav {
+    background-color:aliceblue;
+    grid-area: 1 / 4 / 2 / 10;
 
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-    }
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
 
-    .title {
-        box-sizing: border-box;
-        border-style: dashed;
-        border-color: black;
-        border-width: 1px;
-        grid-area: 3 / 3 / 7 / 6;
-        z-index: 1;
-        min-height: 15rem;
+.title {
+    box-sizing: border-box;
+    border-style: dashed;
+    border-color: black;
+    border-width: 1px;
+    grid-area: 3 / 3 / 7 / 6;
+    z-index: 1;
+    min-height: 15rem;
 
-    }
+}
 
-    .preview {
-        box-sizing: border-box;
-        border-style: dashed;
-        border-color: black;
-        border-width: 1px;
-        grid-area: 3 / 6 / 9 / 11;
-        z-index: 1;
-        min-height: 28rem;
-    }
-
+.preview {
+    box-sizing: border-box;
+    border-style: dashed;
+    border-color: black;
+    border-width: 1px;
+    grid-area: 3 / 6 / 9 / 11;
+    z-index: 1;
+    min-height: 28rem;
+}
 </style>
+
+<CubeBackground/>
 
 <div class="grid_container">
     <nav>
