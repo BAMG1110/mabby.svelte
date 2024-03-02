@@ -28,7 +28,7 @@ onMount(() => {
     // scene.add(cube);
     
     const loader = new GLTFLoader()
-    loader.load('src/lib/assets/interogation_room.glb', function(glft){
+    loader.load('assets/interogation_room.glb', function(glft){
         scene.add(glft.scene)
     }, undefined, function(error){
         console.error(error)
