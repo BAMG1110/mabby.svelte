@@ -8,6 +8,8 @@ let container;
 onMount(() => {
     let width = document.getElementById("bg").offsetWidth
     let height = document.getElementById("bg").offsetHeight
+    let newFov = 120
+    let fovdir = 1
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(120, width / height, 0.1, 1000);
     camera.position.set(0,0,5);
@@ -43,19 +45,28 @@ onMount(() => {
         // Añadiendo el cubo a la escena
         scene.add(cube);
     }
-    // const loader = new GLTFLoader()
-    // loader.load('assets/interogation_room.glb', function(glft){
-    //     scene.add(glft.scene)
-    // }, undefined, function(error){
-    //     console.error(error)
-    // })
+    const loader = new GLTFLoader()
+    loader.load('assets/Bee.glb', function(glft){
+        glft.scene.scale.set(10, 10, 10)
+        glft.scene.position.set(0,0,-4)
+        scene.add(glft.scene)
+    }, undefined, function(error){
+        console.error(error)
+    })
 
-    // const controls = new OrbitControls(camera, renderer.domElement);
-    // controls.update();
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.update();
 
     const animate = function () {
         requestAnimationFrame(animate);
-        // controls.update();
+        controls.update();
+
+        if (newFov > 160 || newFov < 30){
+            fovdir *= -1
+        }
+        newFov = newFov + fovdir
+        camera.fov = newFov;
+        camera.updateProjectionMatrix();
         
         renderer.render(scene, camera);
     };
