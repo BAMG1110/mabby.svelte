@@ -29,7 +29,7 @@ nav {
     border-style: dashed;
     border-color:white;
     border-width: 1px;
-    grid-area: 3 / 3 / 7 / 6;
+    grid-area: 3 / 3 / 5 / 6;
     z-index: 1;
     min-height: 15rem;
 
@@ -40,7 +40,7 @@ nav {
     border-style: dashed;
     border-color:white;
     border-width: 1px;
-    grid-area: 3 / 6 / 9 / 11;
+    grid-area: 3 / 6 / 7 / 11;
     z-index: 1;
     min-height: 28rem;
 }
