@@ -8,7 +8,7 @@ let container;
 onMount(() => {
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(120, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.set(0,100,100);
+    camera.position.set(0,0,10);
     
     const renderer = new THREE.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
@@ -22,17 +22,17 @@ onMount(() => {
     light.position.set(5, 5, 5);
     scene.add(AmbientLight);
     
-    // const geometry = new THREE.BoxGeometry(10, 10, 10);
-    // const material = new THREE.MeshStandardMaterial();
-    // const cube = new THREE.Mesh(geometry, material);
-    // scene.add(cube);
+    const geometry = new THREE.BoxGeometry(10, 10, 10);
+    const material = new THREE.MeshStandardMaterial();
+    const cube = new THREE.Mesh(geometry, material);
+    scene.add(cube);
     
-    const loader = new GLTFLoader()
-    loader.load('assets/interogation_room.glb', function(glft){
-        scene.add(glft.scene)
-    }, undefined, function(error){
-        console.error(error)
-    })
+    // const loader = new GLTFLoader()
+    // loader.load('assets/interogation_room.glb', function(glft){
+    //     scene.add(glft.scene)
+    // }, undefined, function(error){
+    //     console.error(error)
+    // })
 
     // const controls = new OrbitControls(camera, renderer.domElement);
     // controls.update();
@@ -47,25 +47,21 @@ onMount(() => {
     animate();
 
     window.addEventListener('resize', () => {
-        let width = window.innerWidth/2
-        let height = window.innerHeight/2
-        camera.aspect = window.innerWidth / window.innerHeight;
-        cube.scale(width, height, nuevaProfundidad)
+        let width = document.getElementById("bg").offsetWidth
+        let height = document.getElementById("bg").offsetHeight
+        camera.aspect = width / height;
+        // cube.scale(width/2, height/2, 1)
         camera.updateProjectionMatrix();
-        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setSize(width, height);
     });
 });
 </script>
 
 <style>
-.bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+.scene {
   z-index: 0;
+  grid-area: 1 / 1 / -1 / -1;
 }
 </style>
 
-<div class="bg" bind:this={container}></div>
+<div class="scene" bind:this={container}></div>

@@ -51,9 +51,9 @@ nav {
     import CubeBackground from '$lib/components/CubeBackground.svelte';
 </script>
 
-<CubeBackground/>
 
-<div class="grid_container">
+
+<div class="grid_container" id="bg">
     <nav>
         <a href="https://github.com/mabby1110?tab=repositories">git</a>
         <a href="/">
@@ -67,4 +67,5 @@ nav {
     <div class="preview">
         <slot/>
     </div>
+    <CubeBackground/>
 </div>
