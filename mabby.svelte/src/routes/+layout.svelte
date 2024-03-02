@@ -62,7 +62,7 @@ nav {
         <a href="/about">about</a>
     </nav>
     <div class="title">
-        <h1>:p</h1>
+        <h1>muevele :p</h1>
     </div>
     <div class="preview">
         <slot/>
