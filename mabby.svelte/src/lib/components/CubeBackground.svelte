@@ -10,7 +10,7 @@ onMount(() => {
     let height = document.getElementById("bg").offsetHeight
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(120, width / height, 0.1, 1000);
-    camera.position.set(0,0,10);
+    camera.position.set(0,0,5);
     
     const renderer = new THREE.WebGLRenderer();
     renderer.setSize(width, height);
@@ -20,15 +20,29 @@ onMount(() => {
     light.position.set(0, 0, 5);
     scene.add(light);
     
-    const AmbientLight = new THREE.AmbientLight(0xffffff, 1, 100);
-    light.position.set(5, 5, 5);
-    scene.add(AmbientLight);
+    // const AmbientLight = new THREE.AmbientLight(0xffffff, 1, 100);
+    // light.position.set(5, 5, 5);
+    // scene.add(AmbientLight);
     
     const geometry = new THREE.BoxGeometry(10, 10, 10);
     const material = new THREE.MeshStandardMaterial();
-    const cube = new THREE.Mesh(geometry, material);
-    scene.add(cube);
-    
+    const cubesConfig = [
+        { position: [0, -10, 0], scale: [1, 1, 1] }, // Piso
+        { position: [0, 10, 0], scale: [1, 1, 1] }, // Techo
+        { position: [10, 0, 0], scale: [1, 1, 1] }, // Pared derecha
+        { position: [-10, 0, 0], scale: [1, 1, 1] }, // Pared izquierda
+        { position: [0, 0, -10], scale: [1, 1, 1] } // Pared trasera
+    ];
+
+    for (let i = 0; i < cubesConfig.length; i++) {
+        const cube = new THREE.Mesh(geometry, material);
+        // Configurando la posición del cubo
+        cube.position.set(...cubesConfig[i].position);
+        // Configurando la escala del cubo
+        cube.scale.set(...cubesConfig[i].scale);
+        // Añadiendo el cubo a la escena
+        scene.add(cube);
+    }
     // const loader = new GLTFLoader()
     // loader.load('assets/interogation_room.glb', function(glft){
     //     scene.add(glft.scene)
