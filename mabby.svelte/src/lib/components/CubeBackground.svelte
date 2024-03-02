@@ -6,12 +6,14 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 
 let container;
 onMount(() => {
+    let width = document.getElementById("bg").offsetWidth
+    let height = document.getElementById("bg").offsetHeight
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(120, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const camera = new THREE.PerspectiveCamera(120, width / height, 0.1, 1000);
     camera.position.set(0,0,10);
     
     const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setSize(width, height);
     container.appendChild(renderer.domElement);
     
     const light = new THREE.PointLight(0xffffff, 100, 100);
@@ -58,10 +60,10 @@ onMount(() => {
 </script>
 
 <style>
-.scene {
-  z-index: 0;
-  grid-area: 1 / 1 / -1 / -1;
-}
+    .scene {
+    z-index: 0;
+    grid-area: 1 / 1 / -1 / -1;
+    }
 </style>
 
 <div class="scene" bind:this={container}></div>
