@@ -8,19 +8,21 @@ let container;
 onMount(() => {
     let width = document.getElementById("bg").offsetWidth
     let height = document.getElementById("bg").offsetHeight
-    let newFov = 120
+    let newFov = 130
     let fovdir = 1
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(120, width / height, 0.1, 1000);
-    camera.position.set(0,0,5);
+    const camera = new THREE.PerspectiveCamera(40, width / height, 0.1, 1000);
+    camera.position.set(0,0,15);
     
     const renderer = new THREE.WebGLRenderer();
     renderer.setSize(width, height);
     container.appendChild(renderer.domElement);
     
-    const light = new THREE.PointLight(0xffffff, 100, 100);
-    light.position.set(0, 0, 5);
-    scene.add(light);
+    const light1 = new THREE.PointLight(0x590098, 100, 100);
+    light1.position.set(0, 0, 12);
+    const light2 = new THREE.PointLight(0xfcd303, 100, 100);
+    light2.position.set(0, 0, 3);
+    scene.add(light1, light2);
     
     // const AmbientLight = new THREE.AmbientLight(0xffffff, 1, 100);
     // light.position.set(5, 5, 5);
@@ -61,10 +63,10 @@ onMount(() => {
         requestAnimationFrame(animate);
         controls.update();
 
-        if (newFov > 160 || newFov < 30){
+        if (newFov > 130 || newFov < 10){
             fovdir *= -1
         }
-        newFov = newFov + fovdir
+        newFov = newFov + fovdir*0.01
         camera.fov = newFov;
         camera.updateProjectionMatrix();
         
