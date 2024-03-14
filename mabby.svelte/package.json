@@ -50,6 +50,7 @@
 	"types": "./dist/index.d.ts",
 	"type": "module",
 	"dependencies": {
+		"@google/generative-ai": "^0.3.0",
 		"three": "^0.162.0"
 	}
 }

@@ -63,6 +63,7 @@ nav {
     </nav>
     <div class="title">
         <h1>muevele :p</h1>
+        <a href="/gertrudis">gertrudis</a>
     </div>
     <div class="preview">
         <slot/>
