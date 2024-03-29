@@ -55,15 +55,17 @@ nav {
 
 <div class="grid_container" id="bg">
     <nav>
-        <a href="https://github.com/mabby1110?tab=repositories">git</a>
         <a href="/">
             <img src={logo} alt="mabby1110 logo">
         </a>
+        <a href="/macetas">$macetas.00</a>
+        <a href="/chat">chat</a>
         <a href="/about">about</a>
+        <a href="https://github.com/mabby1110?tab=repositories">git</a>
     </nav>
     <div class="title">
-        <h1>muevele :p</h1>
-        <a href="/gertrudis">gertrudis</a>
+        <h1>
+        </h1>
     </div>
     <div class="preview">
         <slot/>

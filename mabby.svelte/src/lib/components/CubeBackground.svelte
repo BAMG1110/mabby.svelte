@@ -8,7 +8,7 @@ let container;
 onMount(() => {
     let width = document.getElementById("bg").offsetWidth
     let height = document.getElementById("bg").offsetHeight
-    let newFov = 130
+    let newFov = 10
     let fovdir = 1
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(40, width / height, 0.1, 1000);
