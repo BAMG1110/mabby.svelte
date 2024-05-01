@@ -8,11 +8,9 @@ let container;
 onMount(() => {
     let width = document.getElementById("bg").offsetWidth
     let height = document.getElementById("bg").offsetHeight
-    let newFov = 10
-    let fovdir = 1
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(40, width / height, 0.1, 1000);
-    camera.position.set(0,0,15);
+    camera.position.set(0,0,20);
     
     const renderer = new THREE.WebGLRenderer();
     renderer.setSize(width, height);
@@ -62,12 +60,6 @@ onMount(() => {
     const animate = function () {
         requestAnimationFrame(animate);
         controls.update();
-
-        if (newFov > 130 || newFov < 10){
-            fovdir *= -1
-        }
-        newFov = newFov + fovdir*0.01
-        camera.fov = newFov;
         camera.updateProjectionMatrix();
         
         renderer.render(scene, camera);
@@ -86,11 +78,11 @@ onMount(() => {
 });
 </script>
 
+<div class="scene" bind:this={container}></div>
+
 <style>
     .scene {
     z-index: 0;
     grid-area: 1 / 1 / -1 / -1;
     }
 </style>
-
-<div class="scene" bind:this={container}></div>
